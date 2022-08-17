@@ -25,7 +25,7 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function ()
     QBCore.Functions.GetPlayerData(function (PlayerData)
         PlayerJob = PlayerData.job
         if PlayerData.job.onduty then
-            if PlayerData.job.name == "kfc" then
+            if PlayerData.job.name == "casino" then
                 TriggerServerEvent("QBCore:ToggleDuty")
             end
         end
@@ -56,89 +56,62 @@ CreateThread(function()
     end
 end)
 
-RegisterNetEvent("qb-kfc:DutyB")
-AddEventHandler("qb-kfc:DutyB", function ()
+RegisterNetEvent("qb-scasino:DutyB")
+AddEventHandler("qb-scasino:DutyB", function ()
     TriggerServerEvent("QBCore:ToggleDuty")
 end)
 
-RegisterNetEvent("qb-kfc:Tray1")
-AddEventHandler("qb-kfc:Tray1", function ()
-    TriggerEvent("inventory:client:SetCurrentStash", "kfctray1")
-    TriggerServerEvent("inventory:server:OpenInventory", "stash", "kfctray1", {
+RegisterNetEvent("qb-scasino:Tray1")
+AddEventHandler("qb-scasino:Tray1", function ()
+    TriggerEvent("inventory:client:SetCurrentStash", "casinotray1")
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "casinotray1", {
         maxweight = 10000,
         slots = 6,
     })
 end)
 
-RegisterNetEvent("qb-kfc:Tray2")
-AddEventHandler("qb-kfc:Tray2", function ()
-    TriggerEvent("inventory:client:SetCurrentStash", "kfctray2")
-    TriggerServerEvent("inventory:server:OpenInventory", "stash", "kfctray2", {
+RegisterNetEvent("qb-scasino:Tray2")
+AddEventHandler("qb-scasino:Tray2", function ()
+    TriggerEvent("inventory:client:SetCurrentStash", "casinotray2")
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "casinotray2", {
         maxweight = 10000,
         slots = 6,
     })
 end)
 
-RegisterNetEvent("qb-kfc:Tray3")
-AddEventHandler("qb-kfc:Tray3", function ()
-    TriggerEvent("inventory:client:SetCurrentStash", "kfctray3")
-    TriggerServerEvent("inventory:server:OpenInventory", "stash", "kfctray3", {
+RegisterNetEvent("qb-scasino:Tray3")
+AddEventHandler("qb-scasino:Tray3", function ()
+    TriggerEvent("inventory:client:SetCurrentStash", "casinotray3")
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "casinotray3", {
         maxweight = 10000,
         slots = 6,
     })
 end)
 
-RegisterNetEvent("qb-kfc:Tray4")
-AddEventHandler("qb-kfc:Tray4", function ()
-    TriggerEvent("inventory:client:SetCurrentStash", "kfctray4")
-    TriggerServerEvent("inventory:server:OpenInventory", "stash", "kfctray4", {
+RegisterNetEvent("qb-scasino:Tray4")
+AddEventHandler("qb-scasino:Tray4", function ()
+    TriggerEvent("inventory:client:SetCurrentStash", "casinotray4")
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "casinotray4", {
         maxweight = 10000,
         slots = 6,
     })
 end)
 
-RegisterNetEvent("qb-kfc:Storage")
-AddEventHandler("qb-kfc:Storage", function ()
-    TriggerEvent("inventory:client:SetCurrentStash", "kfcstorage")
-    TriggerServerEvent("inventory:server:OpenInventory", "stash", "kfcstorage", {
+RegisterNetEvent("qb-scasino:Storage")
+AddEventHandler("qb-scasino:Storage", function ()
+    TriggerEvent("inventory:client:SetCurrentStash", "casinostorage")
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "casinostorage", {
         maxweight = 250000,
         slots = 40,
     })
 end)
 
-
---Meal Creations
-RegisterNetEvent("qb-kfc:BoxMeal")
-AddEventHandler("qb-kfc:BoxMeal", function()
-		local randomToy = math.random(1,10)
-		--remove box
-		TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-boxmeal", 1)
-		--add items from box
-		TriggerServerEvent('QBCore:Server:AddItem', "kfc-heartstopper", 1)
-		TriggerServerEvent('QBCore:Server:AddItem', "kfc-softdrink", 1)
-		TriggerServerEvent('QBCore:Server:AddItem', "kfc-fries", 1)
-
-		if randomToy < 4 then
-			QBCore.Functions.Notify("No Free Item in Box Looool", "error")
-		elseif randomToy == 4 then
-			TriggerServerEvent('QBCore:Server:AddItem', "kfc-snacker", 1)
-            		TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kfc-snacker"], "add")
-		elseif randomToy < 10 and randomToy > 4 then
-			QBCore.Functions.Notify("No toy in Box Looool", "error")
-		elseif randomToy == 10 then
-			TriggerServerEvent('QBCore:Server:AddItem', "kfc-submarine", 1)
-            		TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kfc-submarine"], "add")
-		else
-            		QBCore.Functions.Notify("No toy in Box Looool", "error")
-        	end
-end)
-
-RegisterNetEvent("qb-kfc:CreateBoxMeal")
-AddEventHandler("qb-kfc:CreateBoxMeal", function()
+RegisterNetEvent("qb-scasino:CherryCocktail")
+AddEventHandler("qb-scasino:CherryCocktail", function()
     if onDuty then
-    	QBCore.Functions.TriggerCallback('qb-kfc:server:get:ingredientBoxMeal', function(HasItems)  
+    	QBCore.Functions.TriggerCallback('qb-scasino:server:get:ingredientcherrycocktail', function(HasItems)  
     		if HasItems then
-				QBCore.Functions.Progressbar("pickup_sla", "Making A Box Meal..", 4000, false, true, {
+				QBCore.Functions.Progressbar("pickup_sla", "Making a Cherry Cocktail..", 4000, false, true, {
 					disableMovement = true,
 					disableCarMovement = true,
 					disableMouse = false,
@@ -148,51 +121,20 @@ AddEventHandler("qb-kfc:CreateBoxMeal", function()
 					anim = "givetake1_a",
 					flags = 8,
 				}, {}, {}, function() -- Done
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-fries", 1)
-                    			TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-heartstopper", 1)
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-softdrink", 1)
-					TriggerServerEvent('QBCore:Server:AddItem', "kfc-boxmeal", 1)
-                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kfc-boxmeal"], "add")
-                    			QBCore.Functions.Notify("You made a A Box Meal", "success")
+					TriggerServerEvent('QBCore:Server:RemoveItem', "cocktailglassglass", 1)
+					TriggerServerEvent('QBCore:Server:RemoveItem', "whiskey", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "cherry", 1)
+					TriggerServerEvent('QBCore:Server:AddItem', "cherrycocktail", 1)
+                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["cocktailglass"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["cherry"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["whiskey"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["cherrycocktail"], "add")
+                    			QBCore.Functions.Notify("You made a Cherry Cocktail", "success")
 				end, function()
 					QBCore.Functions.Notify("Cancelled..", "error")
 				end)
 			else
-   				QBCore.Functions.Notify("You dont have the items to make this", "error")
-			end
-		end)
-	else 
-		QBCore.Functions.Notify("You must be Clocked into work", "error")
-	end  
-end)
-
-RegisterNetEvent("qb-kfc:SnackerBurger")
-AddEventHandler("qb-kfc:SnackerBurger", function()
-    if onDuty then
-    	QBCore.Functions.TriggerCallback('qb-kfc:server:get:ingredientBurger', function(HasItems)  
-    		if HasItems then
-				QBCore.Functions.Progressbar("pickup_sla", "Making Burgers..", 4000, false, true, {
-					disableMovement = true,
-					disableCarMovement = true,
-					disableMouse = false,
-					disableCombat = true,
-				}, {
-					animDict = "mp_common",
-					anim = "givetake1_a",
-					flags = 8,
-				}, {}, {}, function() -- Done
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-meat", 1)
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-lettuce", 1)
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-bun", 1)
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-tomato", 1)
-					TriggerServerEvent('QBCore:Server:AddItem', "kfc-snacker", 1)
-                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kfc-snacker"], "add")
-                    			QBCore.Functions.Notify("You made a Snacker Burger", "success")
-				end, function()
-					QBCore.Functions.Notify("Cancelled..", "error")
-				end)
-			else
-   				QBCore.Functions.Notify("You dont have the ingredients to make this", "error")
+   				QBCore.Functions.Notify("You dont have the right stuff to make this", "error")
 			end
 		end)
 	else 
@@ -200,12 +142,12 @@ AddEventHandler("qb-kfc:SnackerBurger", function()
 	end
 end)
 
-RegisterNetEvent("qb-kfc:ZingerBurger")
-AddEventHandler("qb-kfc:ZingerBurger", function()
+RegisterNetEvent("qb-scasino:AppleCocktail")
+AddEventHandler("qb-scasino:AppleCocktail", function()
     if onDuty then
-    	QBCore.Functions.TriggerCallback('qb-kfc:server:get:ingredientBurger', function(HasItems)  
+    	QBCore.Functions.TriggerCallback('qb-scasino:server:get:ingredientapplecocktail', function(HasItems)  
     		if HasItems then
-				QBCore.Functions.Progressbar("pickup_sla", "Making Burgers..", 4000, false, true, {
+				QBCore.Functions.Progressbar("pickup_sla", "Making an Apple Cocktail..", 4000, false, true, {
 					disableMovement = true,
 					disableCarMovement = true,
 					disableMouse = false,
@@ -215,18 +157,20 @@ AddEventHandler("qb-kfc:ZingerBurger", function()
 					anim = "givetake1_a",
 					flags = 8,
 				}, {}, {}, function() -- Done
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-meat", 1)
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-lettuce", 1)
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-bun", 1)
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-tomato", 1)
-					TriggerServerEvent('QBCore:Server:AddItem', "kfc-zingerburger", 1)
-                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kfc-zingerburger"], "add")
-                    			QBCore.Functions.Notify("You made a Zinger Burger", "success")
+					TriggerServerEvent('QBCore:Server:RemoveItem', "cocktailglass", 1)
+					TriggerServerEvent('QBCore:Server:RemoveItem', "whiskey", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "apple", 1)
+					TriggerServerEvent('QBCore:Server:AddItem', "applecocktail", 1)
+                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["cocktailglass"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["apple"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["whiskey"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["applecocktail"], "add")
+                    			QBCore.Functions.Notify("You made an Apple Cocktail", "success")
 				end, function()
 					QBCore.Functions.Notify("Cancelled..", "error")
 				end)
 			else
-   				QBCore.Functions.Notify("You dont have the ingredients to make this", "error")
+   				QBCore.Functions.Notify("You dont have the right stuff to make this", "error")
 			end
 		end)
 	else 
@@ -234,12 +178,12 @@ AddEventHandler("qb-kfc:ZingerBurger", function()
 	end
 end)
 
-RegisterNetEvent("qb-kfc:HeartStopper")
-AddEventHandler("qb-kfc:HeartStopper", function()
+RegisterNetEvent("qb-scasino:BananaCocktail")
+AddEventHandler("qb-scasino:BananaCocktail", function()
     if onDuty then
-    	QBCore.Functions.TriggerCallback('qb-kfc:server:get:ingredientBurger', function(HasItems)  
+    	QBCore.Functions.TriggerCallback('qb-scasino:server:get:ingredientbananacocktail', function(HasItems)  
     		if HasItems then
-				QBCore.Functions.Progressbar("pickup_sla", "Making Burgers..", 4000, false, true, {
+				QBCore.Functions.Progressbar("pickup_sla", "Making a Banana Cocktail..", 4000, false, true, {
 					disableMovement = true,
 					disableCarMovement = true,
 					disableMouse = false,
@@ -249,18 +193,20 @@ AddEventHandler("qb-kfc:HeartStopper", function()
 					anim = "givetake1_a",
 					flags = 8,
 				}, {}, {}, function() -- Done
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-meat", 1)
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-lettuce", 1)
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-bun", 1)
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-tomato", 1)
-					TriggerServerEvent('QBCore:Server:AddItem', "kfc-heartstopper", 1)
-                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kfc-heartstopper"], "add")
-                    			QBCore.Functions.Notify("You made a Heart Stopper", "success")
+					TriggerServerEvent('QBCore:Server:RemoveItem', "cocktailglass", 1)
+					TriggerServerEvent('QBCore:Server:RemoveItem', "whiskey", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "banana", 1)
+					TriggerServerEvent('QBCore:Server:AddItem', "bananacocktail", 1)
+                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["cocktailglass"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["whiskey"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["banana"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["bananacocktail"], "add")
+                    			QBCore.Functions.Notify("You made a Banana Cocktail", "success")
 				end, function()
 					QBCore.Functions.Notify("Cancelled..", "error")
 				end)
 			else
-   				QBCore.Functions.Notify("You dont have the ingredients to make this", "error")
+   				QBCore.Functions.Notify("You dont have the right stuff to make this", "error")
 			end
 		end)
 	else 
@@ -268,13 +214,12 @@ AddEventHandler("qb-kfc:HeartStopper", function()
 	end
 end)
 
-
-RegisterNetEvent("qb-kfc:Submarine")
-AddEventHandler("qb-kfc:Submarine", function()
+RegisterNetEvent("qb-scasino:KiwiCocktail")
+AddEventHandler("qb-scasino:KiwiCocktail", function()
     if onDuty then
-    	QBCore.Functions.TriggerCallback('qb-kfc:server:get:ingredientSubmarine', function(HasItems)  
+    	QBCore.Functions.TriggerCallback('qb-scasino:server:get:ingredientkiwicocktail', function(HasItems)  
     		if HasItems then
-				QBCore.Functions.Progressbar("pickup_sla", "Making A Submarine..", 4000, false, true, {
+				QBCore.Functions.Progressbar("pickup_sla", "Making a Kiwi Cocktail..", 4000, false, true, {
 					disableMovement = true,
 					disableCarMovement = true,
 					disableMouse = false,
@@ -284,29 +229,33 @@ AddEventHandler("qb-kfc:Submarine", function()
 					anim = "givetake1_a",
 					flags = 8,
 				}, {}, {}, function() -- Done
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-meat", 1)
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-bun", 1)
-					TriggerServerEvent('QBCore:Server:AddItem', "kfc-submarine", 1)
-                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kfc-submarine"], "add")
-                    			QBCore.Functions.Notify("You made a Submarine Roll", "success")
+					TriggerServerEvent('QBCore:Server:RemoveItem', "cocktailglass", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "kiwi", 1)
+					TriggerServerEvent('QBCore:Server:RemoveItem', "whiskey", 1)
+					TriggerServerEvent('QBCore:Server:AddItem', "kiwicocktail", 1)
+                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["cocktailglass"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kiwi"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["whiskey"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kiwicocktail"], "add")
+                    			QBCore.Functions.Notify("You made a Kiwi Cocktail", "success")
 				end, function()
 					QBCore.Functions.Notify("Cancelled..", "error")
 				end)
 			else
-   				QBCore.Functions.Notify("You dont have the ingredients to make this", "error")
+   				QBCore.Functions.Notify("You dont have the right stuff to make this", "error")
 			end
 		end)
 	else 
 		QBCore.Functions.Notify("You must be Clocked into work", "error")
-	end  
+	end
 end)
 
-RegisterNetEvent("qb-kfc:veggieburger")
-AddEventHandler("qb-kfc:veggieburger", function()
+RegisterNetEvent("qb-scasino:ParadiseCocktail")
+AddEventHandler("qb-scasino:ParadiseCocktail", function()
     if onDuty then
-    	QBCore.Functions.TriggerCallback('qb-kfc:server:get:ingredientveggieburger', function(HasItems)  
+    	QBCore.Functions.TriggerCallback('qb-scasino:server:get:ingredientparadisecocktail', function(HasItems)  
     		if HasItems then
-				QBCore.Functions.Progressbar("pickup_sla", "Making A Meat Free Burger..", 4000, false, true, {
+				QBCore.Functions.Progressbar("pickup_sla", "Making a Paradise Cocktail..", 4000, false, true, {
 					disableMovement = true,
 					disableCarMovement = true,
 					disableMouse = false,
@@ -316,169 +265,212 @@ AddEventHandler("qb-kfc:veggieburger", function()
 					anim = "givetake1_a",
 					flags = 8,
 				}, {}, {}, function() -- Done
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-tomato", 1)
-                    			TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-lettuce", 1)
-					TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-bun", 1)
-					TriggerServerEvent('QBCore:Server:AddItem', "kfc-veggieburger", 1)
-                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kfc-veggieburger"], "add")
-                   			QBCore.Functions.Notify("You made a Meat Free Burger", "success")
+					TriggerServerEvent('QBCore:Server:RemoveItem', "cocktailglass", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "apple", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "cherry", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "kiwi", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "banana", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "watermelon", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "orange", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "lemon", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "lime", 1)
+					TriggerServerEvent('QBCore:Server:RemoveItem', "whiskey", 1)
+					TriggerServerEvent('QBCore:Server:AddItem', "paradisecocktail", 1)
+                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["cocktailglass"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["apple"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["cherry"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kiwi"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["banana"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["watermelon"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["orange"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["lemon"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["lime"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["whiskey"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["paradisecocktail"], "add")
+                    			QBCore.Functions.Notify("You made a Paradise Cocktail", "success")
 				end, function()
 					QBCore.Functions.Notify("Cancelled..", "error")
 				end)
 			else
-   				QBCore.Functions.Notify("You dont have the ingredients to make this", "error")
+   				QBCore.Functions.Notify("You dont have the right stuff to make this", "error")
 			end
 		end)
 	else 
 		QBCore.Functions.Notify("You must be Clocked into work", "error")
-	end  
+	end
 end)
 
-
-
-RegisterNetEvent("qb-kfc:SoftDrink")
-AddEventHandler("qb-kfc:SoftDrink", function()
+RegisterNetEvent("qb-scasino:CherryDrink")
+AddEventHandler("qb-scasino:CherryDrink", function()
     if onDuty then
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
-        if HasItem then
-           MakeSoftDrink()
-        else
-            QBCore.Functions.Notify("You don't have any soda syrup..", "error")
-        end
-      end, 'kfc-sodasyrup')
-    else
-        QBCore.Functions.Notify("You must be Clocked into work", "error")
-    end
+    	QBCore.Functions.TriggerCallback('qb-scasino:server:get:ingredientcherrydrink', function(HasItems)  
+    		if HasItems then
+				QBCore.Functions.Progressbar("pickup_sla", "Making a Cherry Drink..", 4000, false, true, {
+					disableMovement = true,
+					disableCarMovement = true,
+					disableMouse = false,
+					disableCombat = true,
+				}, {
+					animDict = "mp_common",
+					anim = "givetake1_a",
+					flags = 8,
+				}, {}, {}, function() -- Done
+					TriggerServerEvent('QBCore:Server:RemoveItem', "drink-glass", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "cherry", 1)
+					TriggerServerEvent('QBCore:Server:AddItem', "cherrydrink", 1)
+                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["drink-glass"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["cherry"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["cherrydrink"], "add")
+                    			QBCore.Functions.Notify("You made a Cherry Drink", "success")
+				end, function()
+					QBCore.Functions.Notify("Cancelled..", "error")
+				end)
+			else
+   				QBCore.Functions.Notify("You dont have the right stuff to make this", "error")
+			end
+		end)
+	else 
+		QBCore.Functions.Notify("You must be Clocked into work", "error")
+	end
 end)
 
-RegisterNetEvent("qb-kfc:mShake")
-AddEventHandler("qb-kfc:mShake", function()
+RegisterNetEvent("qb-scasino:LemonDrink")
+AddEventHandler("qb-scasino:LemonDrink", function()
     if onDuty then
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
-        if HasItem then
-           MakeMShake()
-        else
-            QBCore.Functions.Notify("You don't have any Milkshake Formula..", "error")
-        end
-      end, 'kfc-mshakeformula')
-    else
-        QBCore.Functions.Notify("You must be Clocked into work", "error")
-    end
+    	QBCore.Functions.TriggerCallback('qb-scasino:server:get:ingredientlemondrink', function(HasItems)  
+    		if HasItems then
+				QBCore.Functions.Progressbar("pickup_sla", "Making Rip-off Lemonade..", 4000, false, true, {
+					disableMovement = true,
+					disableCarMovement = true,
+					disableMouse = false,
+					disableCombat = true,
+				}, {
+					animDict = "mp_common",
+					anim = "givetake1_a",
+					flags = 8,
+				}, {}, {}, function() -- Done
+					TriggerServerEvent('QBCore:Server:RemoveItem', "drink-glass", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "lemon", 1)
+					TriggerServerEvent('QBCore:Server:AddItem', "lemondrink", 1)
+                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["drink-glass"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["lemon"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["lemondrink"], "add")
+                    			QBCore.Functions.Notify("You made Rip-off Lemonade", "success")
+				end, function()
+					QBCore.Functions.Notify("Cancelled..", "error")
+				end)
+			else
+   				QBCore.Functions.Notify("You dont have the right stuff to make this", "error")
+			end
+		end)
+	else 
+		QBCore.Functions.Notify("You must be Clocked into work", "error")
+	end
 end)
 
-RegisterNetEvent("qb-kfc:Fries")
-AddEventHandler("qb-kfc:Fries", function()
+RegisterNetEvent("qb-scasino:LimeDrink")
+AddEventHandler("qb-scasino:LimeDrink", function()
     if onDuty then
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
-        if HasItem then
-           MakeFries()
-        else
-            QBCore.Functions.Notify("You don't have any potatoes..", "error")
-        end
-      end, 'kfc-potato')
-    else
-        QBCore.Functions.Notify("You must be Clocked into work", "error")
-    end
+    	QBCore.Functions.TriggerCallback('qb-scasino:server:get:ingredientlimedrink', function(HasItems)  
+    		if HasItems then
+				QBCore.Functions.Progressbar("pickup_sla", "Making a Lime Drink..", 4000, false, true, {
+					disableMovement = true,
+					disableCarMovement = true,
+					disableMouse = false,
+					disableCombat = true,
+				}, {
+					animDict = "mp_common",
+					anim = "givetake1_a",
+					flags = 8,
+				}, {}, {}, function() -- Done
+					TriggerServerEvent('QBCore:Server:RemoveItem', "drink-glass", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "lime", 1)
+					TriggerServerEvent('QBCore:Server:AddItem', "limedrink", 1)
+                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["drink-glass"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["lime"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["limedrink"], "add")
+                    			QBCore.Functions.Notify("You made a Lime Drink", "success")
+				end, function()
+					QBCore.Functions.Notify("Cancelled..", "error")
+				end)
+			else
+   				QBCore.Functions.Notify("You dont have the right stuff to make this", "error")
+			end
+		end)
+	else 
+		QBCore.Functions.Notify("You must be Clocked into work", "error")
+	end
 end)
 
-
-RegisterNetEvent("qb-kfc:PattyFry")
-AddEventHandler("qb-kfc:PattyFry", function()
+RegisterNetEvent("qb-scasino:OrangeDrink")
+AddEventHandler("qb-scasino:OrangeDrink", function()
     if onDuty then
-    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
-        if HasItem then
-           MakePatty()
-        else
-            QBCore.Functions.Notify("You don't have any raw patties..", "error", 5000)
-        end
-      end, 'kfc-raw')
-    else
-        QBCore.Functions.Notify("You must be Clocked into work", "error", 5000)
-    end
+    	QBCore.Functions.TriggerCallback('qb-scasino:server:get:ingredientorangedrink', function(HasItems)  
+    		if HasItems then
+				QBCore.Functions.Progressbar("pickup_sla", "Making a Orange Drink..", 4000, false, true, {
+					disableMovement = true,
+					disableCarMovement = true,
+					disableMouse = false,
+					disableCombat = true,
+				}, {
+					animDict = "mp_common",
+					anim = "givetake1_a",
+					flags = 8,
+				}, {}, {}, function() -- Done
+					TriggerServerEvent('QBCore:Server:RemoveItem', "drink-glass", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "orange", 1)
+					TriggerServerEvent('QBCore:Server:AddItem', "orangedrink", 1)
+                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["drink-glass"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["orange"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["orangedrink"], "add")
+                    			QBCore.Functions.Notify("You made a Orange Drink", "success")
+				end, function()
+					QBCore.Functions.Notify("Cancelled..", "error")
+				end)
+			else
+   				QBCore.Functions.Notify("You dont have the right stuff to make this", "error")
+			end
+		end)
+	else 
+		QBCore.Functions.Notify("You must be Clocked into work", "error")
+	end
 end)
 
--- Functions --
-function MakeFries()
-	TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-potato", 1)
-	QBCore.Functions.Progressbar("pickup", "Frying the fries..", 4000, false, true, {
-	    disableMovement = true,
-	    disableCarMovement = true,
-	    disableMouse = false,
-	    disableCombat = true,
-	},{
-	    animDict = "amb@prop_human_bbq@male@base",
-	    anim = "base",
-	    flags = 8,
-	    }, {
-		model = "prop_cs_fork",
-		bone = 28422,
-		coords = vector3(-0.005, 0.00, 0.00),
-		rotation = vector3(175.0, 160.0, 0.0),
-	    }
-	)
-	Citizen.Wait(4000)
-	TriggerServerEvent('QBCore:Server:AddItem', "kfc-fries", 4)
-	TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kfc-fries"], "add")
-	QBCore.Functions.Notify("You made 4 fries", "success")
-	StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
-end
-
-
-function MakePatty()
-    TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-raw", 1)
-    QBCore.Functions.Progressbar("pickup", "Cooking the Patty..", 4000, false, true, {
-        disableMovement = true,
-        disableCarMovement = true,
-        disableMouse = false,
-        disableCombat = true,
-    },{
-        animDict = "amb@prop_human_bbq@male@base",
-        anim = "base",
-        flags = 8,
-    }, {
-        model = "prop_cs_fork",
-        bone = 28422,
-        coords = vector3(-0.005, 0.00, 0.00),
-        rotation = vector3(175.0, 160.0, 0.0),
-    }    
-)
-    Citizen.Wait(4000)
-    TriggerServerEvent('QBCore:Server:AddItem', "kfc-meat", 1)
-    TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kfc-meat"], "add")
-    QBCore.Functions.Notify("You cooked the meat", "success")
-    StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
-end
-
-function MakeSoftDrink()
-    TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-sodasyrup", 1)
-    QBCore.Functions.Progressbar("pickup", "Filling a cup..", 4000, false, true, {
-        disableMovement = true,
-        disableCarMovement = false,
-        disableMouse = false,
-        disableCombat = false,
-    })
-    Citizen.Wait(4000)
-    TriggerServerEvent('QBCore:Server:AddItem', "kfc-softdrink", 1)
-    TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kfc-softdrink"], "add")
-    QBCore.Functions.Notify("You made a Soda", "success")
-end  
-
-
-function MakeMShake()
-    TriggerServerEvent('QBCore:Server:RemoveItem', "kfc-mshakeformula", 1)
-    QBCore.Functions.Progressbar("pickup", "Filling up a cup..", 4000, false, true, {
-        disableMovement = true,
-        disableCarMovement = false,
-        disableMouse = false,
-        disableCombat = false,
-    })
-    Citizen.Wait(4000)
-    TriggerServerEvent('QBCore:Server:AddItem', "kfc-mshake", 1)
-    TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kfc-mshake"], "add")
-    QBCore.Functions.Notify("You made a Milkshake", "success")
-end  
+RegisterNetEvent("qb-scasino:WatermelonDrink")
+AddEventHandler("qb-scasino:WatermelonDrink", function()
+    if onDuty then
+    	QBCore.Functions.TriggerCallback('qb-scasino:server:get:ingredientwatermelondrink', function(HasItems)  
+    		if HasItems then
+				QBCore.Functions.Progressbar("pickup_sla", "Making a Watermelon Drink..", 4000, false, true, {
+					disableMovement = true,
+					disableCarMovement = true,
+					disableMouse = false,
+					disableCombat = true,
+				}, {
+					animDict = "mp_common",
+					anim = "givetake1_a",
+					flags = 8,
+				}, {}, {}, function() -- Done
+					TriggerServerEvent('QBCore:Server:RemoveItem', "drink-glass", 1)
+                    TriggerServerEvent('QBCore:Server:RemoveItem', "watermelon", 1)
+					TriggerServerEvent('QBCore:Server:AddItem', "watermelondrink", 1)
+                    			TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["drink-glass"], "remove")
+                                TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["watermelon"], "remove")
+								TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["watermelondrink"], "add")
+                    			QBCore.Functions.Notify("You made a Watermelon Drink", "success")
+				end, function()
+					QBCore.Functions.Notify("Cancelled..", "error")
+				end)
+			else
+   				QBCore.Functions.Notify("You dont have the right stuff to make this", "error")
+			end
+		end)
+	else 
+		QBCore.Functions.Notify("You must be Clocked into work", "error")
+	end
+end)
    
-RegisterNetEvent("qb-kfc:shop")
-AddEventHandler("qb-kfc:shop", function()
-    TriggerServerEvent("inventory:server:OpenInventory", "shop", "kfc", Config.Items)
+RegisterNetEvent("qb-scasino:shop")
+AddEventHandler("qb-scasino:shop", function()
+    TriggerServerEvent("inventory:server:OpenInventory", "shop", "casino", Config.Items)
 end)
