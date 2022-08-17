@@ -1,11 +1,11 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-RegisterServerEvent("qb-kfc:bill:player")
-AddEventHandler("qb-kfc:bill:player", function(playerId, amount)
+RegisterServerEvent("qb-scasino:bill:player")
+AddEventHandler("qb-scasino:bill:player", function(playerId, amount)
         local biller = QBCore.Functions.GetPlayer(source)
         local billed = QBCore.Functions.GetPlayer(tonumber(playerId))
         local amount = tonumber(amount)
-        if biller.PlayerData.job.name == 'kfc' then
+        if biller.PlayerData.job.name == 'casino' then
             if billed ~= nil then
                 if biller.PlayerData.citizenid ~= billed.PlayerData.citizenid then
                     if amount and amount > 0 then
@@ -41,61 +41,136 @@ AddEventHandler("qb-kfc:bill:player", function(playerId, amount)
         end
 end)
 
-QBCore.Functions.CreateCallback('qb-kfc:server:get:ingredientBurger', function(source, cb)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(source)
-    local lettuce = Player.Functions.GetItemByName("kfc-lettuce")
-    local meat = Player.Functions.GetItemByName("kfc-lettuce")
-    local bun = Player.Functions.GetItemByName("kfc-lettuce")
-    local tomato = Player.Functions.GetItemByName("kfc-tomato")
-    if lettuce ~= nil and meat ~= nil and bun ~= nil and tomato ~= nil then
-        cb(true)
-    else
-        cb(false)
-    end
-end)
-
-QBCore.Functions.CreateCallback('qb-kfc:server:get:ingredientSubmarine', function(source, cb)
+QBCore.Functions.CreateCallback('qb-scasino:server:get:ingredientcherrydrink', function(source, cb)
     local src = source
     local Ply = QBCore.Functions.GetPlayer(src)
-    local meat = Ply.Functions.GetItemByName("kfc-lettuce")
-    local bun = Ply.Functions.GetItemByName("kfc-lettuce")
-    if meat ~= nil and bun ~= nil then
+    local cherry = Ply.Functions.GetItemByName("cherry")
+    local glass = Ply.Functions.GetItemByName("drink-glass")
+    if cherry ~= nil and glass ~= nil then
         cb(true)
     else
         cb(false)
     end
 end)
 
-QBCore.Functions.CreateCallback('qb-kfc:server:get:ingredientveggieburger', function(source, cb)
+QBCore.Functions.CreateCallback('qb-scasino:server:get:ingredientlemondrink', function(source, cb)
     local src = source
     local Ply = QBCore.Functions.GetPlayer(src)
-    local bun = Ply.Functions.GetItemByName("kfc-lettuce")
-    local tomato = Ply.Functions.GetItemByName("kfc-tomato")
-    local lettuce = Ply.Functions.GetItemByName("kfc-lettuce")
-    if bun ~= nil and lettuce ~= nil and tomato ~= nil then
+    local lemon = Ply.Functions.GetItemByName("lemon")
+    local glass = Ply.Functions.GetItemByName("drink-glass")
+    if lemon ~= nil and glass ~= nil then
         cb(true)
     else
         cb(false)
     end
 end)
 
-QBCore.Functions.CreateCallback('qb-kfc:server:get:ingredientBoxMeal', function(source, cb)
+QBCore.Functions.CreateCallback('qb-scasino:server:get:ingredientlimedrink', function(source, cb)
     local src = source
     local Ply = QBCore.Functions.GetPlayer(src)
-    local fries = Ply.Functions.GetItemByName("kfc-fries")
-    local heartstopper = Ply.Functions.GetItemByName("kfc-heartstopper")
-    local software = Ply.Functions.GetItemByName("kfc-softdrink")
-    if fries ~= nil and heartstopper ~= nil and software ~= nil then
+    local lime = Ply.Functions.GetItemByName("lime")
+    local glass = Ply.Functions.GetItemByName("drink-glass")
+    if lime ~= nil and glass ~= nil then
         cb(true)
     else
         cb(false)
     end
 end)
 
-QBCore.Functions.CreateUseableItem("kfc-boxmeal", function(source, item)
-    local Player = QBCore.Functions.GetPlayer(source)
-    TriggerClientEvent("qb-kfc:BoxMeal", source, item.name)
+QBCore.Functions.CreateCallback('qb-scasino:server:get:ingredientorangedrink', function(source, cb)
+    local src = source
+    local Ply = QBCore.Functions.GetPlayer(src)
+    local watermelon = Ply.Functions.GetItemByName("orange")
+    local glass = Ply.Functions.GetItemByName("drink-glass")
+    if watermelon ~= nil and glass ~= nil then
+        cb(true)
+    else
+        cb(false)
+    end
 end)
 
+QBCore.Functions.CreateCallback('qb-scasino:server:get:ingredientwatermelondrink', function(source, cb)
+    local src = source
+    local Ply = QBCore.Functions.GetPlayer(src)
+    local watermelon = Ply.Functions.GetItemByName("watermelon")
+    local glass = Ply.Functions.GetItemByName("drink-glass")
+    if watermelon ~= nil and glass ~= nil then
+        cb(true)
+    else
+        cb(false)
+    end
+end)
 
+-----COCKTAIL----------------------------------------------------
+
+QBCore.Functions.CreateCallback('qb-scasino:server:get:ingredientapplecocktail', function(source, cb)
+    local src = source
+    local Ply = QBCore.Functions.GetPlayer(src)
+    local glass = Ply.Functions.GetItemByName("cocktailglass")
+    local apple = Ply.Functions.GetItemByName("apple")
+    local whiskey = Ply.Functions.GetItemByName("whiskey")
+    if glass ~= nil and apple ~= nil and whiskey ~= nil then
+        cb(true)
+    else
+        cb(false)
+    end
+end)
+
+QBCore.Functions.CreateCallback('qb-scasino:server:get:ingredientbananacocktail', function(source, cb)
+    local src = source
+    local Ply = QBCore.Functions.GetPlayer(src)
+    local glass = Ply.Functions.GetItemByName("cocktailglass")
+    local banana = Ply.Functions.GetItemByName("banana")
+    local whiskey = Ply.Functions.GetItemByName("whiskey")
+    if glass ~= nil and banana ~= nil and whiskey ~= nil then
+        cb(true)
+    else
+        cb(false)
+    end
+end)
+
+QBCore.Functions.CreateCallback('qb-scasino:server:get:ingredientcherrycocktail', function(source, cb)
+    local src = source
+    local Ply = QBCore.Functions.GetPlayer(src)
+    local glass = Ply.Functions.GetItemByName("cocktailglass")
+    local cherry = Ply.Functions.GetItemByName("cherry")
+    local whiskey = Ply.Functions.GetItemByName("whiskey")
+    if glass ~= nil and cherry ~= nil and whiskey ~= nil then
+        cb(true)
+    else
+        cb(false)
+    end
+end)
+
+QBCore.Functions.CreateCallback('qb-scasino:server:get:ingredientkiwicocktail', function(source, cb)
+    local src = source
+    local Ply = QBCore.Functions.GetPlayer(src)
+    local glass = Ply.Functions.GetItemByName("cocktailglass")
+    local kiwi = Ply.Functions.GetItemByName("kiwi")
+    local whiskey = Ply.Functions.GetItemByName("whiskey")
+    if glass ~= nil and kiwi ~= nil and whiskey ~= nil then
+        cb(true)
+    else
+        cb(false)
+    end
+end)
+
+QBCore.Functions.CreateCallback('qb-scasino:server:get:ingredientparadisecocktail', function(source, cb)
+    local src = source
+    local Ply = QBCore.Functions.GetPlayer(src)
+    local glass = Ply.Functions.GetItemByName("cocktailglass")
+    local apple = Ply.Functions.GetItemByName("apple")
+    local cherry = Ply.Functions.GetItemByName("cherry")
+    local kiwi = Ply.Functions.GetItemByName("kiwi")
+    local banana = Ply.Functions.GetItemByName("banana")
+    local watermelon = Ply.Functions.GetItemByName("watermelon")
+    local orange = Ply.Functions.GetItemByName("orange")
+    local lemon = Ply.Functions.GetItemByName("lemon")
+    local lime = Ply.Functions.GetItemByName("lime")
+    local whiskey = Ply.Functions.GetItemByName("whiskey")
+    if glass ~= nil and cherry ~= nil and apple ~= nil and kiwi ~= nil and banana ~= nil and watermelon ~= nil and orange  ~= nil and lemon ~= nil and lime ~= nil then
+        cb(true)
+    else
+        cb(false)
+    end
+end)
