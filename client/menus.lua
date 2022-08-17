@@ -5,41 +5,41 @@ PlayerJob = {}
 local onDuty = false
 
 Citizen.CreateThread(function ()
-    exports['qb-target']:AddBoxZone("KfcDuty", vector3(341.95, -886.4, 29.34), 0.6, 0.6,{
-        name = "KfcDuty",
-		heading = 0,
+    exports['qb-target']:AddBoxZone("casinoDuty", vector3(966.11, 47.05, 71.7), 0.5, 0.5,{
+        name = "casinoDuty",
+		heading = 330,
 		debugPoly = false,
-        minZ=26.34,
-        maxZ=30.34
+        minZ=68.1,
+        maxZ=72.1
     }, {
         options = {
             {
-                event = "qb-kfc:dutymenu",
+                event = "qb-scasino:dutymenu",
                 icon = "far fa-clipboard",
-                label = "Duty Option",
-                job = "kfc",
+                label = "Casino Options",
+                job = "casino",
             },
         },
         distance = 1.5
     })
-        exports['qb-target']:AddBoxZone("kfc_tray_1", vector3(344.05, -884.16, 29.34), 0.7, 0.6,{
-            name = "kfc_tray_1",
-            heading = 270,
+        exports['qb-target']:AddBoxZone("casino_tray_1", vector3(977.22, 25.34, 71.46), 1, 1,{
+            name = "casino_tray_1",
+            heading = 325,
             debugPoly = false,
-            minZ=25.54,
-            maxZ=29.54
+            minZ=68.06,
+            maxZ=72.06
         },{
             options = {
                 {
-                    event = "qb-kfc:Tray1",
+                    event = "qb-scasino:Tray1",
                     icon = "far fa-clipboard",
-                    label = "Tray 1",
+                    label = "Bar Item",
                 },
             },
             distance = 1.5
         })
-        exports['qb-target']:AddBoxZone("kfc_tray_2", vector3(345.46, -884.17, 29.34), 0.7, 0.6,{
-            name = "kfc_tray_2",
+        exports['qb-target']:AddBoxZone("casino_tray_2", vector3(345.46, -884.17, 29.34), 0.7, 0.6,{
+            name = "casino_tray_2",
             heading = 270,
             debugPoly = false,
             minZ=25.54,
@@ -47,15 +47,15 @@ Citizen.CreateThread(function ()
         },{
             options = {
                 {
-                    event = "qb-kfc:Tray2",
+                    event = "qb-scasino:Tray2",
                     icon = "far fa-clipboard",
                     label = "Tray 2",
                 },
             },
             distance = 1.5
         })
-        exports['qb-target']:AddBoxZone("kfc_tray_3", vector3(346.87, -884.2, 29.34), 0.7, 0.6,{
-            name = "kfc_tray_3",
+        exports['qb-target']:AddBoxZone("casino_tray_3", vector3(346.87, -884.2, 29.34), 0.7, 0.6,{
+            name = "casino_tray_3",
             heading = 270,
             debugPoly = false,
             minZ=25.54,
@@ -63,195 +63,122 @@ Citizen.CreateThread(function ()
         },{
             options = {
                 {
-                    event = "qb-kfc:Tray3",
+                    event = "qb-scasino:Tray3",
                     icon = "far fa-clipboard",
                     label = "Tray 3",
                 },
             },
             distance = 1.5
+        
         })
-        exports['qb-target']:AddBoxZone("kfccooker ", vector3(347.5, -898.91, 29.34), 2.4, 1, {
-            name="kfccooker",
-            heading=270,
+        exports['qb-target']:AddBoxZone("casinodrinks", vector3(979.54, 23.84, 71.46), 1.5, 1.5, {
+            name="casinodrinks",
+            heading=280,
             debugPoly=false,
-            minZ=25.74,
-            maxZ=29.74,
-        }, {
-            options = {
-                {
-                    event = "qb-kfc:PattyFry",
-                    icon = "fas fa-hamburger",
-                    label = "Burger Cook Station",
-                    job = "kfc",
-                },
-            },
-            distance = 1.5
-        })
-    
-            exports['qb-target']:AddBoxZone("kfcfryer", vector3(340.37, -896.83, 29.34), 6, 1, {
-            name="kfcfryer",
-            heading=0,
-            debugPoly=false,
-            minZ=25.74,
-            maxZ=29.74,
-            }, {
-                options = {
-                {
-                    event = "qb-kfc:Fries",
-                    icon = "fas fa-box",
-                    label = "Make Fries",
-                    job = "kfc",
-                },
-                },
-                distance = 1.5
-            })
-    
-    
-        exports['qb-target']:AddBoxZone("kfcdrinks", vector3(344.6, -890.73, 29.34), 3.0, 1.0,{
-            name="kfcdrinks",
-            heading=270,
-            debugPoly=false,
-            minZ=26.14,
-            maxZ=30.14,
+            minZ=69.06,
+            maxZ=73.06,
             }, {
             options = {
                 {
-                event = "qb-kfc:DrinksMenu",
+                event = "qb-scasino:DrinksMenu",
                 icon = "fas fa-filter",
                 label = "Make Some Drinks",
-                job = "kfc",
+                job = "casino",
                 },
             },
             distance = 1.5
             })
     
     
-             exports['qb-target']:AddBoxZone("burgerfridge",vector3(347.92, -893.98, 29.34), 6, 0.5, {
+             exports['qb-target']:AddBoxZone("burgerfridge",vector3(979.93, 23.43, 71.46), 1, 1, {
                 name="burgerfridge",
-                heading=0,
+                heading=310,
                 debugPoly=false,
-                minZ=26.94,
-                maxZ=30.94,
+                minZ=67.46,
+                maxZ=71.46,
             }, {
                     options = {
                         {
-                            event = "qb-kfc:OrderMenu",
+                            event = "qb-scasino:OrderMenu",
                             icon = "fas fa-laptop",
                             label = "Order Ingredients!",
-                            job = "kfc",
+                            job = "casino",
                         },
                     },
                     distance = 1.5
                 })
     
-            exports['qb-target']:AddBoxZone("kfcdisplay",vector3(344.8, -889.61, 29.34), 4.6, 1.2,  {
-                name="kfcdisplay",
-                heading=270,
+            exports['qb-target']:AddBoxZone("casinodisplay",vector3(981.39, 21.95, 71.46), 1, 2,  {
+                name="casinodisplay",
+                heading=225,
                 debugPoly=false,
-                minZ=26.34,
-                maxZ=30.34,
+                minZ=67.46,
+                maxZ=71.46,
             }, {
                     options = {
                         {
-                            event = "qb-kfc:Storage",
+                            event = "qb-scasino:Storage",
                             icon = "fas fa-box",
                             label = "Storage",
-                            job = "kfc",
+                            job = "casino",
                         },
                     },
                     distance = 1.5
                 })
     
-    
-            exports['qb-target']:AddBoxZone("craftburger",vector3(344.98, -893.77, 29.34), 1.8, 0.7, {
-                name="craftburger",
-                heading=0,
+            exports['qb-target']:AddBoxZone("casino_register_1", vector3(980.69, 26.04, 71.46), 0.5, 0.5, {
+                name="casino_register_1",
                 debugPoly=false,
-                minZ=25.34,
-                maxZ=29.34,
+                heading=340,
+                minZ=67.86,
+                maxZ=71.86,
             }, {
                     options = {
                         {
-                            event = "qb-kfc:BurgerMenu",
-                            icon = "fas fa-clipboard",
-                            label = "Burger Work Station",
-                            job = "kfc",
-                        },
-                    },
-                    distance = 1.5
-                })
-
-                exports['qb-target']:AddBoxZone("craftburger2",vector3(344.94, -895.62, 29.34), 1.8, 0.7, {
-                    name="craftburger2",
-                    heading=0,
-                    debugPoly=false,
-                    minZ=25.34,
-                    maxZ=29.34,
-                }, {
-                        options = {
-                            {
-                                event = "qb-kfc:BurgerMenu",
-                                icon = "fas fa-cheeseburger",
-                                label = "Burger Work Station",
-                                job = "kfc",
-                            },
-                        },
-                        distance = 1.5
-                    })
-    
-            exports['qb-target']:AddBoxZone("kfc_register_1", vector3(344.67, -884.21, 29.34), 0.5, 0.4, {
-                name="kfc_register_1",
-                debugPoly=false,
-                heading=270,
-                minZ=25.94,
-                maxZ=29.94,
-            }, {
-                    options = {
-                        {
-                            event = "qb-kfc:bill",
+                            event = "qb-scasino:bill",
                             parms = "1",
                             icon = "fas fa-credit-card",
                             label = "Charge Customer",
-                            job = "kfc",
+                            job = "casino",
                         },
                     },
                     distance = 1.5
                 })
     
-            exports['qb-target']:AddBoxZone("kfc_register_2", vector3(346.14, -884.18, 29.34), 0.6, 0.5, {
-                name="kfc_register_2",
+            exports['qb-target']:AddBoxZone("casino_register_2", vector3(977.03, 23.83, 71.46), 0.5, 0.5, {
+                name="casino_register_2",
                 debugPoly=false,
-                heading=0,
-                minZ=25.94,
-                maxZ=29.94,
+                heading=275,
+                minZ=67.86,
+                maxZ=71.86,
                 }, {
                         options = {
                             {
-                                event = "qb-kfc:bill",
+                                event = "qb-scasino:bill",
                                 parms = "2",
                                 icon = "fas fa-credit-card",
                                 label = "Charge Customer",
-                                job = "kfc",
+                                job = "casino",
                             },
                         },
                         distance = 1.5
                     })  
     
     
-            exports['qb-target']:AddBoxZone("kfc_register_3", vector3(347.67, -884.15, 29.34), 0.6, 0.5, {
-                name="kfc_register_3",
+            exports['qb-target']:AddBoxZone("casino_register_3", vector3(980.76, 21.69, 71.46), 0.5, 0.5, {
+                name="casino_register_3",
                 debugPoly=false,
-                heading=0,
-                minZ=25.94,
-                maxZ=29.94,
+                heading=305,
+                minZ=67.86,
+                maxZ=71.86,
                         }, {
                                 options = {
                                     {
-                                        event = "qb-kfc:bill",
+                                        event = "qb-scasino:bill",
                                         parms = "3",
                                         icon = "fas fa-credit-card",
                                         label = "Charge Customer",
-                                        job = "kfc",
+                                        job = "casino",
                                     },
                                 },
                                 distance = 1.5
@@ -261,169 +188,34 @@ end)
 
 -- MENU - CONTCT ---
 
-RegisterNetEvent('qb-kfc:dutymenu', function(data)
+RegisterNetEvent('qb-scasino:dutymenu', function(data)
 
     exports['qb-menu']:openMenu({
        {
-           header = "Duty Option",
+           header = "Casino Options",
            isMenuHeader = true, -- Set to true to make a nonclickable title
        },
-
        {
            header = "Clock On or Off",
            txt = "Duty On/Off",
            params = {
-               event = "qb-kfc:DutyB", 
+               event = "qb-scasino:DutyB", 
                args = {
                    number = 0,
                }
            }
        },
        {
-           header = "close",
-           txt = "",
+           header = "• Manage Business",
+           txt = "Manage Casino",
            params = {
-               event = "",
+               event = "qb-bossmenu:client:OpenMenu", 
                args = {
                    number = 1,
                }
            }
        },
-   })
-   end)
-
-RegisterNetEvent('qb-kfc:BurgerMenu', function (data)
-    exports['qb-menu']:openMenu({
-        {
-            header = "Burger Menu",
-            isMenuHeader = true, -- Set to true to make a nonclickable title
-        },
-
-        {
-            header = "ZingerBurger",
-            txt = "Bun , Cooked Patty , Tomato , Lettuce",
-            params = {
-                event = "qb-kfc:ZingerBurger", 
-                args = {
-                    number = 1,
-                }
-            }
-        },
-        {
-            header = "Veggie Burger",
-            txt = "Bun , Tomato , Lettuce",
-            params = {
-                event = "qb-kfc:veggieburger",
-                args = {
-                    number = 2,
-                }
-            }
-        },
-
-        {
-            header = "Snacker Burger",
-            txt = "Bun , Cooked Patty , Tomato , Lettuce",
-            params = {
-                event = "qb-kfc:SnackerBurger",
-                args = {
-                    number = 3,
-                }
-            }
-        },
-        {
-            header = "Heart Stopper",
-            txt = "Bun , Cooked Patty , Tomato , Lettuce",
-            params = {
-                event = "qb-kfc:HeartStopper",
-                args = {
-                    number = 4,
-                }
-            }
-        },
-        {
-            header = "Submarine Roll",
-            txt = "Bun & Cooked Meat",
-            params = {
-                event = "qb-kfc:Submarine",
-                args = {
-                    number = 5,
-                }
-            }
-        },
-        {
-            header = "Box Meal",
-            txt = "The Heart Stopper, Fries and SoftDrink",
-            params = {
-                event = "qb-kfc:CreateBoxMeal",
-                args = {
-                    number = 6,
-                }
-            }
-        },
-    })
-end)
-
-RegisterNetEvent('qb-kfc:OrderMenu', function(data)
-
-    exports['qb-menu']:openMenu({
-       {
-           header = "Fridge",
-           isMenuHeader = true, -- Set to true to make a nonclickable title
-       },
-
-       {
-           header = "Purchase Ingredients",
-           txt = "Order Items",
-           params = {
-               event = "qb-kfc:shop", 
-               args = {
-                   number = 0,
-               }
-           }
-       },
-       {
-           header = "close",
-           txt = "",
-           params = {
-               event = "",
-               args = {
-                   number = 1,
-               }
-           }
-       },
-   })
-   end)
-
-   RegisterNetEvent('qb-kfc:DrinksMenu', function(data)
-
-    exports['qb-menu']:openMenu({
-       {
-           header = "Drinks Menu",
-           isMenuHeader = true, -- Set to true to make a nonclickable title
-       },
-
-       {
-           header = "Soft Drink",
-           txt = "Soda Syrup",
-           params = {
-               event = "qb-kfc:SoftDrink", 
-               args = {
-                   number = 0,
-               }
-           }
-       },
-       {
-           header = "Milkshake",
-           txt = "Milkshake Formula",
-           params = {
-               event = "qb-kfc:mShake",
-               args = {
-                   number = 1,
-               }
-           }
-       },
-
-       {
+	   {
            header = "close",
            txt = "",
            params = {
@@ -436,10 +228,161 @@ RegisterNetEvent('qb-kfc:OrderMenu', function(data)
    })
    end)
 
+RegisterNetEvent('qb-scasino:OrderMenu', function(data)
+
+    exports['qb-menu']:openMenu({
+       {
+           header = "Fridge",
+           isMenuHeader = true, -- Set to true to make a nonclickable title
+       },
+       {
+           header = "• Order Ingredients",
+           txt = "Order Items",
+           params = {
+               event = "qb-scasino:shop", 
+               args = {
+                   number = 0,
+               }
+           }
+       },
+       {
+           header = "close",
+           txt = "",
+           params = {
+               event = "",
+               args = {
+                   number = 1,
+               }
+           }
+       },
+   })
+   end)
+
+    RegisterNetEvent('qb-scasino:DrinksMenu', function(data)
+
+    exports['qb-menu']:openMenu({
+       {
+           header = "Drinks Menu",
+           isMenuHeader = true, -- Set to true to make a nonclickable title
+       },
+
+       {
+           header = "• Cherry Cocktail",
+           txt = "a lovely cocktail.",
+           params = {
+               event = "qb-scasino:CherryCocktail", 
+               args = {
+                   number = 0,
+               }
+           }
+       },
+       {
+           header = "• Apple Cocktail",
+           txt = "Rumor has it that Issac Newton\'s apple made this.",
+           params = {
+               event = "qb-scasino:AppleCocktail",
+               args = {
+                   number = 1,
+               }
+           }
+       },
+       {
+           header = "• Banana Cocktail",
+           txt = "Brought by the minions.",
+           params = {
+               event = "qb-scasino:BananaCocktail",
+               args = {
+                   number = 2,
+               }
+           }
+       },
+       {
+           header = "• Cherry Drink",
+           txt = "Cherries!",
+           params = {
+               event = "qb-scasino:CherryDrink",
+               args = {
+                   number = 3,
+               }
+           }
+       },       
+       {
+           header = "• Kiwi Cocktail",
+           txt = "Enjoyed by most!",
+           params = {
+               event = "qb-scasino:KiwiCocktail",
+               args = {
+                   number = 4,
+               }
+           }
+       }, 
+       {
+           header = "• Lemon Drink",
+           txt = "We all know it\'s lemonade",
+           params = {
+               event = "qb-scasino:LemonDrink",
+               args = {
+                   number = 5,
+               }
+           }
+       },       
+       {
+           header = "• Orange Drink",
+           txt = "Fancy orange juice indubitably.",
+           params = {
+               event = "qb-scasino:OrangeDrink",
+               args = {
+                   number = 6,
+               }
+           }
+       },       
+       {
+           header = "• Paradise Cocktail",
+           txt = "Livin\' a Paradise!",
+           params = {
+               event = "qb-scasino:ParadiseCocktail",
+               args = {
+                   number = 7,
+               }
+           }
+       },        
+       {
+           header = "• Lime Drink",
+           txt = "limes.",
+           params = {
+               event = "qb-scasino:LimeDrink",
+               args = {
+                   number = 8,
+               }
+           }
+       },        
+       {
+           header = "• Watermelon Drink",
+           txt = "Fancy Treat!",
+           params = {
+               event = "qb-scasino:WatermelonDrink",
+               args = {
+                   number = 9,
+               }
+           }
+       },      
+       {
+           header = "close",
+           txt = "",
+           params = {
+               event = "",
+               args = {
+                   number = 10,
+               }
+           }
+       },
+   })
+   end)
+
 
 
 -- Till Stuff --
-RegisterNetEvent("qb-kfc:bill", function()
+RegisterNetEvent("qb-scasino:bill", function()
     local bill = exports['qb-input']:ShowInput({
         header = "Cash Register",
         submitText = "Charge Customer",
@@ -462,7 +405,7 @@ RegisterNetEvent("qb-kfc:bill", function()
     })
     if bill then
         if not bill.id or not bill.amount then return end
-        TriggerServerEvent("qb-kfc:bill:player", bill.id, bill.amount)
+        TriggerServerEvent("qb-scasino:bill:player", bill.id, bill.amount)
     end
 end)
 
@@ -490,7 +433,7 @@ Citizen.CreateThread(function()
         local sleep = 100
         if isLoggedIn then
             local pos = GetEntityCoords(PlayerPedId())
-            if PlayerJob.name == 'kfc' then
+            if PlayerJob.name == 'casino' then
                 for k, v in pairs(Config.Locations["duty"]) do
                     if #(pos - vector3(v.x, v.y, v.z)) < 5 then
                         if #(pos - vector3(v.x, v.y, v.z)) < 1.5 then
@@ -512,40 +455,6 @@ Citizen.CreateThread(function()
                     end
                 end
 
-                for k, v in pairs(Config.Locations["pattycooker"]) do
-                    if #(pos - vector3(v.x, v.y, v.z)) < 4.5 then
-                        if onDuty then
-                            if #(pos - vector3(v.x, v.y, v.z)) < 1.5 then
-                                sleep = 5
-                                DrawText3D(v.x, v.y, v.z, "~g~E~w~ - Cook Patties")
-                                if IsControlJustReleased(0, 38) then
-                                    TriggerEvent("qb-kfc:PattyFry")
-                                end
-                            elseif #(pos - vector3(v.x, v.y, v.z)) < 2.5 then
-                                sleep = 5
-                                DrawText3D(v.x, v.y, v.z, "Cook Patties")
-                            end  
-                        end
-                    end
-                end
-
-                for k, v in pairs(Config.Locations["fryer"]) do
-                    if #(pos - vector3(v.x, v.y, v.z)) < 4.5 then
-                        if onDuty then
-                            if #(pos - vector3(v.x, v.y, v.z)) < 1.5 then
-                                sleep = 5
-                                DrawText3D(v.x, v.y, v.z, "~g~E~w~ - Fry Sum Fries")
-                                if IsControlJustReleased(0, 38) then
-                                    TriggerEvent("qb-kfc:Fries")
-                                end
-                            elseif #(pos - vector3(v.x, v.y, v.z)) < 2.5 then
-                                sleep = 5
-                                DrawText3D(v.x, v.y, v.z, "Fry Sum Fries")
-                            end  
-                        end
-                    end
-                end
-
                 for k, v in pairs(Config.Locations["drinks"]) do
                     if #(pos - vector3(v.x, v.y, v.z)) < 4.5 then
                         if onDuty then
@@ -553,7 +462,7 @@ Citizen.CreateThread(function()
                                 sleep = 5
                                 DrawText3D(v.x, v.y, v.z, "~g~E~w~ -  Make Drinks")
                                 if IsControlJustReleased(0, 38) then
-                                    TriggerEvent("qb-kfc:DrinksMenu")
+                                    TriggerEvent("qb-scasino:DrinksMenu")
                                 end
                             elseif #(pos - vector3(v.x, v.y, v.z)) < 2.5 then
                                 sleep = 5
@@ -570,7 +479,7 @@ Citizen.CreateThread(function()
                                 sleep = 5
                                 DrawText3D(v.x, v.y, v.z, "~g~E~w~ -  Open Fridge")
                                 if IsControlJustReleased(0, 38) then
-                                    TriggerEvent("qb-kfc:shop")
+                                    TriggerEvent("qb-scasino:shop")
                                 end
                             elseif #(pos - vector3(v.x, v.y, v.z)) < 2.5 then
                                 sleep = 5
@@ -587,28 +496,11 @@ Citizen.CreateThread(function()
                                 sleep = 5
                                 DrawText3D(v.x, v.y, v.z, "~g~E~w~ -  Open Storage")
                                 if IsControlJustReleased(0, 38) then
-                                    TriggerEvent("qb-kfc:Storage")
+                                    TriggerEvent("qb-scasino:Storage")
                                 end
                             elseif #(pos - vector3(v.x, v.y, v.z)) < 2.5 then
                                 sleep = 5
                                 DrawText3D(v.x, v.y, v.z, "Open Storage")
-                            end  
-                        end
-                    end
-                end
-
-                for k, v in pairs(Config.Locations["craftburger"]) do
-                    if #(pos - vector3(v.x, v.y, v.z)) < 4.5 then
-                        if onDuty then
-                            if #(pos - vector3(v.x, v.y, v.z)) < 1.5 then
-                                sleep = 5
-                                DrawText3D(v.x, v.y, v.z, "~g~E~w~ -  Make a Meal")
-                                if IsControlJustReleased(0, 38) then
-                                    TriggerEvent("qb-kfc:BurgerMenu")
-                                end
-                            elseif #(pos - vector3(v.x, v.y, v.z)) < 2.5 then
-                                sleep = 5
-                                DrawText3D(v.x, v.y, v.z, "Make a Meal")
                             end  
                         end
                     end
@@ -621,7 +513,7 @@ Citizen.CreateThread(function()
                                 sleep = 5
                                 DrawText3D(v.x, v.y, v.z, "~g~E~w~ -  Cash Register")
                                 if IsControlJustReleased(0, 38) then
-                                    TriggerEvent("qb-kfc:bill")
+                                    TriggerEvent("qb-scasino:bill")
                                 end
                             elseif #(pos - vector3(v.x, v.y, v.z)) < 2.5 then
                                 sleep = 5
@@ -638,7 +530,7 @@ Citizen.CreateThread(function()
                                 sleep = 5
                                 DrawText3D(v.x, v.y, v.z, "~g~E~w~ -  Garage")
                                 if IsControlJustReleased(0, 38) then
-                                    TriggerEvent("garage:kfcGarage")
+                                    TriggerEvent("garage:casinoGarage")
                                 end
                             elseif #(pos - vector3(v.x, v.y, v.z)) < 2.5 then
                                 sleep = 5
@@ -657,7 +549,7 @@ Citizen.CreateThread(function()
                             sleep = 5
                             DrawText3D(v.x, v.y, v.z, "~g~E~w~ -  Tray")
                             if IsControlJustReleased(0, 38) then
-                                TriggerEvent("qb-kfc:Tray1")
+                                TriggerEvent("qb-scasino:Tray1")
                             end
                         elseif #(pos - vector3(v.x, v.y, v.z)) < 2.5 then
                             sleep = 5
@@ -672,7 +564,7 @@ Citizen.CreateThread(function()
                             sleep = 5
                             DrawText3D(v.x, v.y, v.z, "~g~E~w~ -  Tray")
                             if IsControlJustReleased(0, 38) then
-                                TriggerEvent("qb-kfc:Tray2")
+                                TriggerEvent("qb-scasino:Tray2")
                             end
                         elseif #(pos - vector3(v.x, v.y, v.z)) < 2.5 then
                             sleep = 5
@@ -687,7 +579,7 @@ Citizen.CreateThread(function()
                             sleep = 5
                             DrawText3D(v.x, v.y, v.z, "~g~E~w~ -  Tray")
                             if IsControlJustReleased(0, 38) then
-                                TriggerEvent("qb-kfc:Tray3")
+                                TriggerEvent("qb-scasino:Tray3")
                             end
                         elseif #(pos - vector3(v.x, v.y, v.z)) < 2.5 then
                             sleep = 5
