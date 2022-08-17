@@ -146,7 +146,7 @@ QBShared.Items = {
 ```
 QBShared.Jobs = {
     ["casino"] = {
-		label = "Limey\'s Juice Shop",
+		label = "Casino Worker",
 		defaultDuty = true,
 		grades = {
             ['0'] = {
