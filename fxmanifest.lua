@@ -1,8 +1,8 @@
 fx_version 'cerulean'
 game 'gta5'
 
-author '!ViDu'
-description 'Simple QB-KFC job for your FiveM Server By !ViDu'
+author '!Stingz'
+description 'Casino Job'
 version '1.0.0'
 
 shared_scripts {
