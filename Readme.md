@@ -100,11 +100,6 @@ Consumeables = {
     ["applecocktail"] = math.random(50, 75),
     ["bananacocktail"] = math.random(50, 75),
     ["kiwicocktail"] = math.random(50, 75),    
-    ["cherrydrink"] = math.random(55, 80),
-    ["lemondrink"] = math.random(55, 80),
-    ["limedrink"] = math.random(55, 80),
-    ["orangedrink"] = math.random(55, 80),
-    ["watermelondrink"] = math.random(55, 80),
 ```
 
 ## Insert into @qb-core/shared/items.lua 
